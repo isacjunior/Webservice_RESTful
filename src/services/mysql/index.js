@@ -7,13 +7,8 @@ const connection = mysql.createConnection({
   database: 'webservice'
 })
 
-const categories = new Promise((resolve, reject) => {
-  connection.query('SELECT * FROM categories', (error, results) => {
-    if (error) {
-      reject(error)
-    }
-    resolve({ categories: results })
-  })
-})
+const categoriesModule = require('./categories')({ connection })
 
-module.exports = categories
+module.exports = {
+  categoies: () => categoriesModule
+}
