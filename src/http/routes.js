@@ -28,7 +28,7 @@ const routes = (server) => {
   // })
 
   server.get('/', (req, res, next) => {
-    res.send('Hello World')
+    res.send('Webservice com Node, Restify e MySql')
     next()
   })
 }

@@ -7,8 +7,15 @@ const connection = mysql.createConnection({
   database: 'webservice'
 })
 
-const categoriesModule = require('./categories')({ connection })
+const errorHandler = (error, msg, rejectFuntion) => {
+  console.error(error)
+  rejectFuntion({ error: msg })
+}
+
+const categoriesModule = require('./categories')({ connection, errorHandler })
+// const productsModule = require('./products')({ connection, errorHandler })
 
 module.exports = {
   categoies: () => categoriesModule
+  // products: () => productsModule
 }
