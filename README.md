@@ -5,7 +5,11 @@ Webservice RESTful com Node, Restify e MySQL
 ## Respositório para fins de estudo.
 
 ## Install dependencies
-npm start
+```
+npm install
+```
 
 ## Start project
+```
 npm run dev
+```
