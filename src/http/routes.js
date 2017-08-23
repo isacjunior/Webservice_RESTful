@@ -2,7 +2,7 @@ const db = require('../services/mysql')
 
 const routes = (server) => {
   server.get('categoria', (req, res, next) => {
-    db.categoies().all()
+    db.categories().all()
       .then(categories => {
         res.send(categories)
         next()
@@ -16,7 +16,7 @@ const routes = (server) => {
   server.post('categoria', (req, res, next) => {
     const { name } = req.params
     server.get('categoria', (req, res, next) => {
-      db.categoies().save(name)
+      db.categories().save(name)
         .then(categories => {
           res.send(categories)
           next()
