@@ -16,6 +16,6 @@ const categoriesModule = require('./categories')({ connection, errorHandler })
 // const productsModule = require('./products')({ connection, errorHandler })
 
 module.exports = {
-  categoies: () => categoriesModule
+  categories: () => categoriesModule
   // products: () => productsModule
 }

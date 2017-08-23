@@ -12,10 +12,20 @@ const routes = (server) => {
         next()
       })
   })
+
   server.post('categoria', (req, res, next) => {
     const { name } = req.params
-    res.send(name)
-    next()
+    server.get('categoria', (req, res, next) => {
+      db.categoies().save(name)
+        .then(categories => {
+          res.send(categories)
+          next()
+        })
+        .catch(error => {
+          console.error(error)
+          next()
+        })
+    })
   })
 
   // server.put('categoria', (req, res, next) => {
