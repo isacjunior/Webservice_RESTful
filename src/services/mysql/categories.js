@@ -9,7 +9,6 @@ const categories = (deps) => {
             errorHandler(error, 'Falha ao listar as categorias', reject)
             return false
           }
-          console.log(results)
           resolve({ categories: results })
         })
       })
@@ -34,11 +33,22 @@ const categories = (deps) => {
             errorHandler(error, `Falha ao atualizar a categoria ${name}`, reject)
             return false
           }
-          resolve({ category: { name } })
+          resolve({ message: 'Categoria atualizada com sucesso', category: { name } })
         })
       })
     },
-    del: () => {}
+    del: (id) => {
+      return new Promise((resolve, reject) => {
+        const { connection, errorHandler } = deps
+        connection.query('DELETE from categories WHERE id = ?', [id], (error, results) => {
+          if (error) {
+            errorHandler(error, `Falha ao deletar a categoria com id: ${id}`, reject)
+            return false
+          }
+          resolve({ message: 'Categoria removida com sucesso', category: { id } })
+        })
+      })
+    }
   }
 }
 

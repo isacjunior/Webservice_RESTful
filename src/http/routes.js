@@ -36,6 +36,18 @@ const routes = (server) => {
     next()
   })
 
+  server.del('categoria', (req, res, next) => {
+    const { id } = req.params
+    db.categories().del(id)
+      .then(categories => {
+        res.send(categories)
+      })
+      .catch(error => {
+        res.send(error)
+      })
+    next()
+  })
+
   server.get('/', (req, res, next) => {
     res.send('Webservice com Node, Restify e MySql')
     next()
